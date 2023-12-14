@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalles del Cliente</title>
+</head>
+<body>
+
+<h1>Detalles del Cliente</h1>
+
+{% if cliente %}
+    <p>Nombre: {{ cliente.Nombre }}</p>
+    <p>Apellido: {{ cliente.Apellido }}</p>
+    <p>Teléfono: {{ cliente.telefono }}</p>
+    <p>Email: {{ cliente.email }}</p>
+    <p>Edad: {{ cliente.edad }}</p>
+    <p>Descripción: {{ cliente.descripcion }}</p>
+    
+{% else %}
+    <p>Cliente no encontrado.</p>
+{% endif %}
+
+
+<button><a href="{% url 'show_clientes' %}">Volver a la lista de clientes</a></button>
+
+</body>
+</html>

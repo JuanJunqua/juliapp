@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Mi Sitio{% endblock %}</title>
+</head>
+<body>
+
+<h1>{% block header %}dildos.inc{% endblock %}</h1>
+
+
+<button><a href="{% url 'add_cliente' %}">Agregar Cliente</a></button>
+<button><a href="{% url 'show_clientes' %}">Mostrar Clientes</a></button>
+<button><a href="{% url 'add_proveedor' %}">Agregar Proveedor</a></button>
+<button><a href="{% url 'show_proveedores' %}">Mostrar Proveedores</a></button>
+
+{% block content %}{% endblock %}
+
+</body>
+</html>
+

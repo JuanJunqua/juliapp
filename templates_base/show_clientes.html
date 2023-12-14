@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Lista de Clientes</h2>
+
+    {% if clientes %}
+        <ul>
+            {% for cliente in clientes %}
+                <li>
+                    {{ cliente.Nombre }} {{ cliente.Apellido }} - 
+                    <a href="{% url 'cliente_info' cliente.id %}">Info</a>
+                    <a href="{% url 'crear_factura' cliente.id %}">Crear Factura</a>
+
+                    <!-- Nuevo: Enlace para ver facturas -->
+                    <a href="{% url 'mostrar_facturas' cliente.id %}">Ver Facturas</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay clientes registrados.</p>
+    {% endif %}
+
+    <button><a href="{% url 'base' %}">Inicio</a></button>
+{% endblock %}

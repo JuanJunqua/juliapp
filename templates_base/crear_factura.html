@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Factura</title>
+</head>
+<body>
+
+<h1>Crear Factura para {{ cliente.Nombre }} {{ cliente.Apellido }}</h1>
+
+<form method="post" action="{% url 'crear_factura' cliente.id %}">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+
+    <button type="submit">Guardar Factura</button>
+</form>
+
+<button><a href="{% url 'show_clientes' %}">Volver a la lista de clientes</a></button>
+
+</body>
+</html>

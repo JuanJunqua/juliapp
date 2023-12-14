@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Facturas de {{ cliente.Nombre }} {{ cliente.Apellido }}</title>
+</head>
+<body>
+
+<h1>Facturas de {{ cliente.Nombre }} {{ cliente.Apellido }}</h1>
+
+{% if facturas %}
+    <ul>
+        {% for factura in facturas %}
+            <li>
+                Fecha: {{ factura.fecha }}, Producto: {{ factura.producto }}, Cantidad: {{ factura.cantidad }}, Precio: {{ factura.precio }}, Total: {{ factura.total }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay facturas registradas para este cliente.</p>
+{% endif %}
+
+<button><a href="{% url 'show_clientes' %}">Volver a la lista de clientes</a></button>
+
+</body>
+</html>

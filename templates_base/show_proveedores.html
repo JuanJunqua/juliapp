@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Lista de Proveedores</h1>
+
+    {% if proveedores %}
+        <ul>
+            {% for proveedor in proveedores %}
+                <li>{{ proveedor.Nombre }} {{ proveedor.Apellido }} - 
+                    <a href="{% url 'proveedor_info' proveedor.id %}">Info</a>
+                    <button>Crear Factura</button>
+                    <button>Ver Facturas</button>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay proveedores registrados.</p>
+    {% endif %}
+
+    <button><a href="{% url 'base' %}">Inicio</a></button>
+{% endblock %}

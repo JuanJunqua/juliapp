@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Agregar Cliente{% endblock %}
+{% block header %}Página de Agregar Cliente{% endblock %}
+
+{% block content %}
+<!-- Contenido específico de la página de agregar cliente -->
+<form method="post" action="{% url 'add_cliente' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+{% endblock %}

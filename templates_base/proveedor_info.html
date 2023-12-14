@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalles del Proveedor</title>
+</head>
+<body>
+
+<h1>Detalles del Proveedor</h1>
+
+{% if proveedor %}
+    <p>Nombre: {{ proveedor.Nombre }}</p>
+    <p>Apellido: {{ proveedor.Apellido }}</p>
+    <p>Teléfono: {{ proveedor.telefono }}</p>
+    <p>Edad: {{ proveedor.edad }}</p>
+    <p>Email: {{ proveedor.email }}</p>
+    <p>Descripción: {{ proveedor.descripcion }}</p>
+    <!-- Agrega más campos según sea necesario -->
+{% else %}
+    <p>No se encontraron detalles para este proveedor.</p>
+{% endif %}
+
+<!-- Agregar enlace para regresar a la lista de proveedores -->
+<button><a href="{% url 'show_proveedores' %}">Volver a la lista de proveedores</a></button>
+
+</body>
+</html>
