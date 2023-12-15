@@ -1,27 +1,48 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Detalles del Cliente</title>
+
+    <!-- Enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
-<h1>Detalles del Cliente</h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Detalles del Cliente</h1>
 
-{% if cliente %}
-    <p>Nombre: {{ cliente.Nombre }}</p>
-    <p>Apellido: {{ cliente.Apellido }}</p>
-    <p>Teléfono: {{ cliente.telefono }}</p>
-    <p>Email: {{ cliente.email }}</p>
-    <p>Edad: {{ cliente.edad }}</p>
-    <p>Descripción: {{ cliente.descripcion }}</p>
-    
-{% else %}
-    <p>Cliente no encontrado.</p>
-{% endif %}
+    {% if cliente %}
+        <dl class="row">
+            <dt class="col-sm-3">Nombre:</dt>
+            <dd class="col-sm-9">{{ cliente.Nombre }}</dd>
 
+            <dt class="col-sm-3">Apellido:</dt>
+            <dd class="col-sm-9">{{ cliente.Apellido }}</dd>
 
-<button><a href="{% url 'show_clientes' %}">Volver a la lista de clientes</a></button>
+            <dt class="col-sm-3">Teléfono:</dt>
+            <dd class="col-sm-9">{{ cliente.telefono }}</dd>
 
+            <dt class="col-sm-3">Email:</dt>
+            <dd class="col-sm-9">{{ cliente.email }}</dd>
+
+            <dt class="col-sm-3">Edad:</dt>
+            <dd class="col-sm-9">{{ cliente.edad }}</dd>
+
+            <dt class="col-sm-3">Descripción:</dt>
+            <dd class="col-sm-9">{{ cliente.descripcion }}</dd>
+        </dl>
+    {% else %}
+        <p>Cliente no encontrado.</p>
+    {% endif %}
+
+    <button class="btn btn-secondary mt-3"><a href="{% url 'show_clientes' %}" class="text-white">Volver a la lista de clientes</a></button>
+</div>
+
+<!-- Enlace al archivo JS de Bootstrap y jQuery (si aún no está incluido) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

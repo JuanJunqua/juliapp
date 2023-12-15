@@ -1,26 +1,40 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Facturas de {{ cliente.Nombre }} {{ cliente.Apellido }}</title>
+
+    <!-- Enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
-<h1>Facturas de {{ cliente.Nombre }} {{ cliente.Apellido }}</h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Facturas de {{ cliente.Nombre }} {{ cliente.Apellido }}</h1>
 
-{% if facturas %}
-    <ul>
-        {% for factura in facturas %}
-            <li>
-                Fecha: {{ factura.fecha }}, Producto: {{ factura.producto }}, Cantidad: {{ factura.cantidad }}, Precio: {{ factura.precio }}, Total: {{ factura.total }}
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No hay facturas registradas para este cliente.</p>
-{% endif %}
+    {% if facturas %}
+        <div class="list-group">
+            {% for factura in facturas %}
+                <div class="list-group-item">
+                    <h6 class="mb-1">Fecha: {{ factura.fecha }}</h6>
+                    <p class="mb-1">Producto: {{ factura.producto }}</p>
+                    <p class="mb-1">Cantidad: {{ factura.cantidad }}</p>
+                    <p class="mb-1">Precio: {{ factura.precio }}</p>
+                    <p class="mb-1">Total: {{ factura.total }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="mt-3">No hay facturas registradas para este cliente.</p>
+    {% endif %}
 
-<button><a href="{% url 'show_clientes' %}">Volver a la lista de clientes</a></button>
+    <button class="btn btn-secondary mt-3"><a href="{% url 'show_clientes' %}" class="text-white">Volver a la lista de clientes</a></button>
+</div>
 
+<!-- Enlace al archivo JS de Bootstrap y jQuery (si aún no está incluido) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,21 +1,43 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Mi Sitio{% endblock %}</title>
+
+    <!-- Enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
+<body class="bg-light">
 
-<h1>{% block header %}dildos.inc{% endblock %}</h1>
+<div class="container mt-5">
+    <h1 class="display-4">{% block header %}Hola{% endblock %}</h1>
 
+    <div class="btn-toolbar mt-3 mb-3" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="Botones de navegación">
+            <button type="button" class="btn btn-primary"><a href="{% url 'add_cliente' %}" class="text-white">Agregar Cliente</a></button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Botones de navegación">
+            <button type="button" class="btn btn-primary"><a href="{% url 'show_clientes' %}" class="text-white">Mostrar Clientes</a></button>
+        </div>
+        <div class="btn-group mr-2" role="group" aria-label="Botones de navegación">
+            <button type="button" class="btn btn-success"><a href="{% url 'add_proveedor' %}" class="text-white">Agregar Proveedor</a></button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Botones de navegación">
+            <button type="button" class="btn btn-success"><a href="{% url 'show_proveedores' %}" class="text-white">Mostrar Proveedores</a></button>
+        </div>
+    </div>
 
-<button><a href="{% url 'add_cliente' %}">Agregar Cliente</a></button>
-<button><a href="{% url 'show_clientes' %}">Mostrar Clientes</a></button>
-<button><a href="{% url 'add_proveedor' %}">Agregar Proveedor</a></button>
-<button><a href="{% url 'show_proveedores' %}">Mostrar Proveedores</a></button>
+    <div class="mt-4">
+        {% block content %}{% endblock %}
+    </div>
+</div>
 
-{% block content %}{% endblock %}
-
+<!-- Enlace al archivo JS de Bootstrap y jQuery (si aún no está incluido) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
 

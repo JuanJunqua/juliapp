@@ -1,13 +1,19 @@
-
 {% extends 'base.html' %}
 
 {% block title %}Agregar Proveedor{% endblock %}
 {% block header %}Página de Agregar Proveedor{% endblock %}
 
 {% block content %}
-<form method="post" action="{% url 'add_proveedor' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar</button>
-</form>
+<div class="container mt-5">
+    <!-- Contenido específico de la página de agregar proveedor -->
+    <h2 class="mb-4">Agregar Proveedor</h2>
+
+    <form method="post" action="{% url 'add_proveedor' %}" class="mb-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+    
+    <button class="btn btn-secondary"><a href="{% url 'show_proveedores' %}" class="text-white">Volver a la lista de proveedores</a></button>
+</div>
 {% endblock %}

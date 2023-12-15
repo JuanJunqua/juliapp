@@ -1,27 +1,51 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Detalles del Proveedor</title>
+
+    <!-- Enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
-<h1>Detalles del Proveedor</h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Detalles del Proveedor</h1>
 
-{% if proveedor %}
-    <p>Nombre: {{ proveedor.Nombre }}</p>
-    <p>Apellido: {{ proveedor.Apellido }}</p>
-    <p>Teléfono: {{ proveedor.telefono }}</p>
-    <p>Edad: {{ proveedor.edad }}</p>
-    <p>Email: {{ proveedor.email }}</p>
-    <p>Descripción: {{ proveedor.descripcion }}</p>
-    <!-- Agrega más campos según sea necesario -->
-{% else %}
-    <p>No se encontraron detalles para este proveedor.</p>
-{% endif %}
+    {% if proveedor %}
+        <dl class="row">
+            <dt class="col-sm-3">Nombre:</dt>
+            <dd class="col-sm-9">{{ proveedor.Nombre }}</dd>
 
-<!-- Agregar enlace para regresar a la lista de proveedores -->
-<button><a href="{% url 'show_proveedores' %}">Volver a la lista de proveedores</a></button>
+            <dt class="col-sm-3">Apellido:</dt>
+            <dd class="col-sm-9">{{ proveedor.Apellido }}</dd>
 
+            <dt class="col-sm-3">Teléfono:</dt>
+            <dd class="col-sm-9">{{ proveedor.telefono }}</dd>
+
+            <dt class="col-sm-3">Edad:</dt>
+            <dd class="col-sm-9">{{ proveedor.edad }}</dd>
+
+            <dt class="col-sm-3">Email:</dt>
+            <dd class="col-sm-9">{{ proveedor.email }}</dd>
+
+            <dt class="col-sm-3">Descripción:</dt>
+            <dd class="col-sm-9">{{ proveedor.descripcion }}</dd>
+            <!-- Agrega más campos según sea necesario -->
+        </dl>
+    {% else %}
+        <p>No se encontraron detalles para este proveedor.</p>
+    {% endif %}
+
+    <!-- Agregar enlace para regresar a la lista de proveedores -->
+    <button class="btn btn-secondary mt-3"><a href="{% url 'show_proveedores' %}" class="text-white">Volver a la lista de proveedores</a></button>
+</div>
+
+<!-- Enlace al archivo JS de Bootstrap y jQuery (si aún no está incluido) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
