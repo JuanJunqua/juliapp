@@ -1,5 +1,6 @@
 from django import forms
 from .models import Cliente, Proveedor, Factura
+from django.forms import formset_factory
 
 
 class ClienteForm(forms.ModelForm):
@@ -18,8 +19,9 @@ class FacturaForm(forms.ModelForm):
     producto = forms.CharField(label='Producto', max_length=100)
     cantidad = forms.IntegerField(label='Cantidad', min_value=1)
     precio = forms.DecimalField(label='Precio', min_value=0.0)
-    total = forms.DecimalField(label='Total', min_value=0.0)
 
     class Meta:
         model = Factura
-        fields = ['fecha', 'producto', 'cantidad', 'precio', 'total']
+        fields = ['fecha', 'producto', 'cantidad', 'precio']
+
+FacturaFormSet = formset_factory(FacturaForm, extra=1)
