@@ -6,6 +6,11 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from .models import Cliente
 from django.http import HttpResponse  
+from django.forms import formset_factory
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Cliente, Factura
+from .forms import FacturaForm, FacturaFormSet
+from django import template
 
 
 
@@ -80,23 +85,19 @@ def crear_factura(request, cliente_id):
     cliente = get_object_or_404(Cliente, pk=cliente_id)
 
     if request.method == 'POST':
-        form = FacturaForm(request.POST)
-        if form.is_valid():
-            factura = form.save(commit=False)
-            factura.cliente = cliente
-            factura.save()
+        formset = FacturaFormSet(request.POST, prefix='factura')
+        if formset.is_valid():
+            for form in formset:
+                factura = form.save(commit=False)
+                factura.cliente = cliente
+                factura.total = factura.cantidad * factura.precio
+                factura.save()
 
-           
-
-            
-            
             return redirect('mostrar_facturas', cliente_id=cliente.id)
-        
-            
     else:
-        form = FacturaForm()
+        formset = FacturaFormSet(prefix='factura')
 
-    return render(request, 'crear_factura.html', {'form': form, 'cliente': cliente})
+    return render(request, 'crear_factura.html', {'formset': formset, 'cliente': cliente})
 
 
 def mostrar_facturas(request, cliente_id):
@@ -104,5 +105,3 @@ def mostrar_facturas(request, cliente_id):
     facturas = Factura.objects.filter(cliente=cliente)
 
     return render(request, 'mostrar_facturas.html', {'cliente': cliente, 'facturas': facturas})
-
-

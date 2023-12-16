@@ -23,5 +23,9 @@ class Factura(models.Model):
     cantidad = models.PositiveIntegerField(default=1)
     precio = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     total = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
-    
-    
+
+    def save(self, *args, **kwargs):
+        # Calculate total before saving
+        self.total = self.cantidad * self.precio
+        super().save(*args, **kwargs)
+
