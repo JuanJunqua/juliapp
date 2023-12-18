@@ -105,3 +105,45 @@ def mostrar_facturas(request, cliente_id):
     facturas = Factura.objects.filter(cliente=cliente)
 
     return render(request, 'mostrar_facturas.html', {'cliente': cliente, 'facturas': facturas})
+
+
+
+
+
+#cambiar la factura
+
+def editar_factura(request, factura_id):
+    factura = get_object_or_404(Factura, pk=factura_id)
+
+    if request.method == 'POST':
+        form = FacturaForm(request.POST, instance=factura)
+        if form.is_valid():
+            form.save()
+            return redirect('mostrar_facturas', cliente_id=factura.cliente.id)
+    else:
+        form = FacturaForm(instance=factura)
+
+    return render(request, 'editar_factura.html', {'form': form, 'factura': factura})
+
+def eliminar_factura(request, factura_id):
+    factura = get_object_or_404(Factura, pk=factura_id)
+   
+    factura.delete()
+
+    return redirect('mostrar_facturas', cliente_id=factura.cliente.id)
+
+def factura_editada(request, factura_id):
+    factura = get_object_or_404(Factura, pk=factura_id)
+
+    if request.method == 'POST':
+        form = FacturaForm(request.POST, instance=factura)
+        if form.is_valid():
+            form.save()
+            return redirect('mostrar_facturas', cliente_id=factura.cliente.id)
+
+    return render(request, 'factura_editada.html', {'factura': factura})
+
+
+def ver_factura(request, factura_id):
+    factura = get_object_or_404(Factura, pk=factura_id)
+    return render(request, 'ver_factura.html', {'factura': factura})

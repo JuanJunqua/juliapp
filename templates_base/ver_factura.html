@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Detalles de la Factura</h1>
+
+        <p><strong>Fecha:</strong> {{ factura.fecha }}</p>
+        <p><strong>Producto:</strong> {{ factura.producto }}</p>
+        <p><strong>Cantidad:</strong> {{ factura.cantidad }}</p>
+        <p><strong>Precio:</strong> {{ factura.precio }}</p>
+
+     
+
+        <a href="{% url 'mostrar_facturas' cliente_id=factura.cliente.id %}" class="btn btn-secondary mt-3">Volver a Facturas</a>
+    </div>
+{% endblock %}

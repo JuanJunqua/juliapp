@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Editar Factura</h1>
+
+        <form method="post" action="{% url 'factura_editada' factura.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+
+        <a href="{% url 'mostrar_facturas' cliente_id=factura.cliente.id %}" class="btn btn-secondary mt-3">Volver a Facturas</a>
+    </div>
+{% endblock %}
