@@ -16,7 +16,7 @@
                         <p class="mb-1">Cantidad: {{ factura.cantidad }}</p>
                         <p class="mb-1">Precio: {{ factura.precio }}</p>
                         
-                        <!-- Botones de editar, eliminar y ver factura -->
+                        
                         <a href="{% url 'editar_factura' factura.id %}" class="btn btn-info btn-sm">Editar</a>
                         <a href="{% url 'eliminar_factura' factura.id %}" class="btn btn-danger btn-sm">Eliminar</a>
                         <a href="{% url 'ver_factura' factura.id %}" class="btn btn-primary btn-sm">Ver Factura</a>
